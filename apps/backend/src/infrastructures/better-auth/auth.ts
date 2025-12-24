@@ -14,7 +14,7 @@ import {
 import { InvitationService } from '@modules/invitation';
 import { SessionQueueSubject } from './session';
 import { InternalServerError } from 'elysia';
-import { Inject } from '@di';
+import { Inject } from '@cryxto/ioc-n-di';
 
 export const BETTER_AUTH = 'BETTER_AUTH';
 export const InjectAuth = () => Inject(BETTER_AUTH);

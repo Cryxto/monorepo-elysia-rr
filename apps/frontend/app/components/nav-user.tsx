@@ -33,6 +33,7 @@ export function NavUser({
     name: string;
     email: string;
     avatar: string;
+    role?: string;
   };
 }) {
   const { isMobile } = useSidebar();
@@ -77,7 +78,7 @@ export function NavUser({
               <div className="grid flex-1 text-right text-sm leading-tight">
                 <span className="truncate font-medium">{currentUser.name}</span>
                 <span className="text-muted-foreground truncate text-xs capitalize">
-                  {currentUser.role}
+                  {currentUser.role || "regular"}
                 </span>
               </div>
               {/* <IconDotsVertical className="ml-auto size-4" /> */}

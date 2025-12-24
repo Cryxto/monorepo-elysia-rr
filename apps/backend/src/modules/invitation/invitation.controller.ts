@@ -1,4 +1,4 @@
-import { Injectable } from '@di';
+import { Injectable } from '@cryxto/ioc-n-di';
 import { BaseController } from '@common/base.controller';
 import { InvitationService } from './invitation.service';
 import z from 'zod';

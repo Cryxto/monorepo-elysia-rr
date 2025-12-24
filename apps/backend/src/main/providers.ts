@@ -1,4 +1,4 @@
-import type { Provider } from '@di';
+import type { Provider } from '@cryxto/ioc-n-di';
 import {
   BETTER_AUTH_MODULE,
   OPENAPI_BETTER_AUTH,

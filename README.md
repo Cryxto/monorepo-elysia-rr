@@ -9,7 +9,7 @@ A modern, type-safe full-stack boilerplate using Bun, Elysia, React Router, and 
 - 🦊 **Elysia** - Ergonomic web framework with end-to-end type safety
 - 🔐 **Better Auth** - Modern authentication with session management, API keys, and OAuth
 - 🗄️ **MikroORM** - Type-safe ORM with SQLite support
-- 💉 **Dependency Injection** - Custom DI container with decorators
+- 💉 **@cryxto/ioc-n-di** - Lightweight DI container with TypeScript decorators
 - 📝 **OpenAPI** - Auto-generated API documentation
 - 🎯 **Access Control** - Role-based permissions system
 - 🔑 **API Key Management** - Built-in API key authentication
@@ -77,7 +77,7 @@ A modern, type-safe full-stack boilerplate using Bun, Elysia, React Router, and 
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Cryxto/monorepo-elysia-rr
 cd monorepo-elysia-rr
 ```
 
@@ -104,9 +104,7 @@ VITE_API_URL=http://localhost:3000
 
 4. Initialize the database:
 ```bash
-cd apps/backend
-bun run migration:create
-bun run migration:up
+bun mikro-rom schema:update --run --safe
 ```
 
 ## 🚀 Development
@@ -145,10 +143,36 @@ OpenAPI documentation available at:
 ### Backend
 
 #### Dependency Injection
-The backend uses a custom DI container with TypeScript decorators:
+
+The backend uses **[@cryxto/ioc-n-di](https://www.npmjs.com/package/@cryxto/ioc-n-di)** - a lightweight dependency injection container with TypeScript decorators.
+
+**Key Principle:** We import directly from `@cryxto/ioc-n-di` throughout the codebase - **NO wrapper files or custom aliases**. This keeps the architecture clean and transparent.
+
+**Container Setup** (`src/container.ts`):
+```typescript
+import 'reflect-metadata';
+import { Container } from '@cryxto/ioc-n-di';
+
+// Create and export singleton container instance
+export const container = Container.createOrGet();
+```
+
+**Container Initialization** (`src/index.ts`):
+```typescript
+import { container } from '@container';
+import { Provider } from '@cryxto/ioc-n-di';
+
+// Bootstrap all providers
+await container.bootstrap(providers);
+
+// Get instances
+const service = container.getInstanceOrThrow(MyService);
+```
+
+**Usage in Services:**
 
 ```typescript
-import { Injectable } from '@di';
+import { Injectable } from '@cryxto/ioc-n-di';
 import { InjectServer } from '@main/decorator';
 import type { ApiServer } from '@main';
 
@@ -156,15 +180,27 @@ import type { ApiServer } from '@main';
 export class MyController {
   constructor(
     @InjectServer() private server: ApiServer,
-    private myService: MyService,
+    private myService: MyService, // Auto-injected by type
   ) {}
 }
 ```
 
+**Custom Decorators** (`src/main/decorator.ts`):
+```typescript
+// Custom decorators for common injections
+import { Inject } from '@cryxto/ioc-n-di';
+import { API_SERVER } from '../common/tokens';
+
+export const InjectServer = () => Inject(API_SERVER);
+```
+
 **Key Principles:**
+- ✅ **Import directly from `@cryxto/ioc-n-di`** - no wrappers
+- Container instance created once in `src/container.ts` using `Container.createOrGet()`
+- Import container via `@container` alias throughout the app
 - Tokens defined in `common/tokens.ts` to avoid circular dependencies
-- Decorators imported directly from `@main/decorator`
-- Services auto-injected by type
+- Custom decorators live in `main/decorator.ts`
+- Services auto-injected by type (no explicit token needed)
 
 #### Module Structure
 Each module follows a consistent pattern:
@@ -454,7 +490,8 @@ MIT
 - [Elysia](https://elysiajs.com) - Web framework
 - [Better Auth](https://better-auth.com) - Authentication library
 - [React Router](https://reactrouter.com) - React framework
-- [MikroORM](https://mikro-orm.io) - TypeScript ORM
+- [MikroORM](https://mikro-orm.io) - TypeScript ORM based on Unit of Work and Entity Mapper 
+- [IoC-n-DI](https://www.npmjs.com/package/@cryxto/ioc-n-di) - Lightweight IoC Container and Dependency Injection
 - [Shadcn UI](https://ui.shadcn.com) - UI components
 
 ## 📞 Support

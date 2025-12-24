@@ -1,4 +1,4 @@
-import { Provider } from '@di';
+import { Provider } from '@cryxto/ioc-n-di';
 import { BehaviorSubject } from 'rxjs';
 
 export const SESSION_QUEUE_SUBJECT = 'SESSION_QUEUE_SUBJECT';

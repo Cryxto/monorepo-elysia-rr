@@ -1,4 +1,4 @@
-import type { Provider } from '@di';
+import type { Provider } from '@cryxto/ioc-n-di';
 import { InfrastructureModule } from '@infrastructures/index';
 import { RootModule } from '@modules/index';
 // import { AllControllers } from '../modules';

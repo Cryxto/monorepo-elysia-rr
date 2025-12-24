@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import { ApiServerProvider, AppProvider, APP, type App } from './main';
 import { ControllersReadyProvider } from './common/controllers.token';
-import { container, Provider } from '@di';
+import { container } from '@container';
+import { Provider } from '@cryxto/ioc-n-di';
 import { ConfigService } from './infrastructures/config';
 import { BETTER_AUTH, type BetterAuth } from '@infrastructures/better-auth';
 import { InfrastructureModule } from './infrastructures';

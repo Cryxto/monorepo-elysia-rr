@@ -7,7 +7,8 @@
     "start": "bun run src/index.ts",
     "auth:migrate": "bunx -b @better-auth/cli migrate --config src/infrastructures/better-auth/auth.config.ts",
     "format": "bunx prettier . --write ",
-    "db:migrate": "bunx -b mikro-orm schema:update --run --safe"
+    "db:migrate": "bunx -b mikro-orm schema:update --run --safe",
+    "mikro-orm" : "bunx -b mikro-orm"
   },
   "dependencies": {
     "@axiomhq/js": "^1.3.1",

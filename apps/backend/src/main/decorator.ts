@@ -1,4 +1,4 @@
-import { Inject } from '@di';
+import { Inject } from '@cryxto/ioc-n-di';
 import { API_SERVER } from '../common/tokens';
 
 /**

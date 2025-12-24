@@ -1,4 +1,4 @@
-import { container } from '@di';
+import { container } from '@container';
 import { betterAuth } from 'better-auth';
 import { admin, apiKey, bearer, openAPI } from 'better-auth/plugins';
 import { AccessControll } from './access-controll';

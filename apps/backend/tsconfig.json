@@ -14,7 +14,7 @@
     "emitDecoratorMetadata": true,
     "strictNullChecks": true,
     "paths": {
-      "@di": ["./src/di.ts"],
+      "@container": ["./src/container.ts"],
       "@entities/*": ["./src/entities/*"],
       "@main": ["./src/main/index.ts"],
       "@main/*": ["./src/main/*"],
