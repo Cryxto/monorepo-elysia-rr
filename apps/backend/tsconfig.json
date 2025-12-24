@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ES2022" /* Specify what module code is generated. */,
+    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "moduleResolution": "node",
+    "types": ["bun-types"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    /* Type Checking */
+    "strict": true,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "paths": {
+      "@di": ["./src/di.ts"],
+      "@entities/*": ["./src/entities/*"],
+      "@main": ["./src/main/index.ts"],
+      "@main/*": ["./src/main/*"],
+      "@infrastructures/*": ["./src/infrastructures/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@models": ["./src/models"],
+      "@common/*": ["./src/common/*"],
+      "@packages/contracts": ["../../packages/contracts/src/index.ts"],
+      "@packages/contracts/*": ["../../packages/contracts/src/*"]
+    }
+  }
+}

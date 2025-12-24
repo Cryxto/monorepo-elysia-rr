@@ -1,0 +1,23 @@
+{
+  "name": "monorepo-elysia-rr",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "backend:dev": "bun --filter 'backend' dev",
+    "frontend:dev": "bun --filter 'frontend' dev",
+    "backend:format": "bun --filter 'backend' format",
+    "dev": "bun run --filter '*' dev",
+    "build": "bun run frontend:build && bun run copy:frontend",
+    "frontend:build": "bun --filter 'frontend' build",
+    "copy:frontend": "rm -rf apps/backend/public && cp -r apps/frontend/build/client apps/backend/public",
+    "backend:start": "bun --filter 'backend' start",
+    "start": "bun --filter 'backend' start"
+  },
+  "dependencies": {
+    "@cryxto/ioc-n-di": "^0.3.1"
+  }
+}

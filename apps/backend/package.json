@@ -1,0 +1,52 @@
+{
+  "name": "backend",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --elide-lines=0 --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "auth:migrate": "bunx -b @better-auth/cli migrate --config src/infrastructures/better-auth/auth.config.ts",
+    "format": "bunx prettier . --write ",
+    "db:migrate": "bunx -b mikro-orm schema:update --run --safe"
+  },
+  "dependencies": {
+    "@axiomhq/js": "^1.3.1",
+    "@bull-board/api": "^6.15.0",
+    "@bull-board/elysia": "^6.15.0",
+    "@bull-board/ui": "^6.15.0",
+    "@cryxto/ioc-n-di": "^0.3.0",
+    "@elysiajs/cors": "^1.4.0",
+    "@elysiajs/openapi": "^1.4.12",
+    "@elysiajs/static": "^1.4.7",
+    "@keyv/bigmap": "^1.3.0",
+    "@mikro-orm/cli": "^6.6.2",
+    "@mikro-orm/core": "^6.6.2",
+    "@mikro-orm/entity-generator": "^6.6.2",
+    "@mikro-orm/libsql": "^6.6.2",
+    "@mikro-orm/migrations": "^6.6.2",
+    "@mikro-orm/reflection": "^6.6.2",
+    "@mikro-orm/seeder": "^6.6.2",
+    "@mikro-orm/sql-highlighter": "^1.0.1",
+    "@packages/contracts": "workspace:*",
+    "axios": "^1.13.2",
+    "better-auth": "^1.4.8",
+    "bullmq": "^5.66.2",
+    "deterministic-object-hash": "^2.0.2",
+    "elysia": "latest",
+    "keyv": "^5.5.5",
+    "luxon": "^3.7.2",
+    "nodemailer": "^7.0.12",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "text-case": "^1.2.9",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.0",
+    "@types/luxon": "^3.7.1",
+    "@types/nodemailer": "^7.0.4",
+    "bun-types": "latest",
+    "prettier": "3.6.2"
+  },
+  "module": "src/index.js"
+}
