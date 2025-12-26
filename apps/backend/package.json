@@ -8,14 +8,14 @@
     "auth:migrate": "bunx -b @better-auth/cli migrate --config src/infrastructures/better-auth/auth.config.ts",
     "format": "bunx prettier . --write ",
     "db:migrate": "bunx -b mikro-orm schema:update --run --safe",
-    "mikro-orm" : "bunx -b mikro-orm"
+    "mikro-orm": "bunx -b mikro-orm"
   },
   "dependencies": {
     "@axiomhq/js": "^1.3.1",
     "@bull-board/api": "^6.15.0",
     "@bull-board/elysia": "^6.15.0",
     "@bull-board/ui": "^6.15.0",
-    "@cryxto/ioc-n-di": "^0.3.0",
+    "@cryxto/ioc-n-di": "^0.4.1",
     "@elysiajs/cors": "^1.4.0",
     "@elysiajs/openapi": "^1.4.12",
     "@elysiajs/static": "^1.4.7",
